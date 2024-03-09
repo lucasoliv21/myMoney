@@ -12,9 +12,9 @@ class Transaction extends Model
     'amount',
     'description',
     'date',
-    // adicione outros campos aqui
+
   ];
 
-  // adicione relacionamentos e métodos personalizados aqui
+
 
 }
