@@ -47,7 +47,7 @@
         </div>
     </div>
       <table class="table-auto w-2/3 border-2 ">
-        <thead>
+        <thead class="bg-cyan-300">
           <tr class="gap-x-1">
             <th class="table-header border">ID</th>
             <th class="table-header border">Description</th>
@@ -57,7 +57,7 @@
             <th class="table-header border">Actions</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody class="bg-white">
           @foreach ($transactions as $transaction)
             <tr class="text-center border">
               <td class="border">{{ $transaction->id }}</td>
@@ -65,7 +65,13 @@
               <td class="border">{{ $transaction->value }}</td>
               <td class="border">{{ $transaction->category }}</td>
               <td class="border">{{ $transaction->updated_at }}</td>
-              <td class="border">edit | delete</td>
+              <td class="border">
+              <form action="{{ route('transactions.destroy', $transaction->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this transaction?')">
+                  @csrf
+                  @method('DELETE')
+                  <button type="submit" class="text-rose-500 hover:text-rose-900">Delete</button>
+              </form>
+              </td>
             </tr>
           @endforeach
         </tbody>

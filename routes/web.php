@@ -28,6 +28,8 @@ Route::get('/transactions', [TransactionController::class, 'index'])
     
 Route::post('/transactions', [TransactionController::class, 'store'])->name('transactions.store');
 
+Route::delete('/transactions/{id}', [TransactionController::class, 'destroy'])->name('transactions.destroy');
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
