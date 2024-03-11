@@ -18,12 +18,12 @@
                     @csrf
                     <!-- Campos do formulário -->
                     <div class="mb-4">
-                        <label for="description" class="block text-gray-700 text-sm font-bold mb-2">Descrição:</label>
-                        <input type="text" name="description" id="description" class="border-2 rounded border-gray-300 p-2 w-full">
+                        <label for="name" class="block text-gray-700 text-sm font-bold mb-2">Descrição:</label>
+                        <input type="text" name="name" id="description" class="border-2 rounded border-gray-300 p-2 w-full">
                     </div>
                     <div class="mb-4">
-                        <label for="amount" class="block text-gray-700 text-sm font-bold mb-2">Valor:</label>
-                        <input type="number" name="amount" id="amount" class="border-2 rounded border-gray-300 p-2 w-full">
+                        <label for="value" class="block text-gray-700 text-sm font-bold mb-2">Valor:</label>
+                        <input type="number" name="value" id="amount" class="border-2 rounded border-gray-300 p-2 w-full">
                     </div>
                     <div class="mb-2">
                       <label for="category">Categoria: </label>
@@ -46,7 +46,7 @@
             </div>
         </div>
     </div>
-      <table class="table-auto w-2/3 border ">
+      <table class="table-auto w-2/3 border-2 ">
         <thead>
           <tr class="gap-x-1">
             <th class="table-header border">ID</th>
@@ -54,16 +54,18 @@
             <th class="table-header border">Amount</th>
             <th class="table-header border">Category</th>
             <th class="table-header border">Date</th>
+            <th class="table-header border">Actions</th>
           </tr>
         </thead>
         <tbody>
           @foreach ($transactions as $transaction)
-            <tr>
-              <td>{{ $transaction->id }}</td>
-              <td>{{ $transaction->description }}</td>
-              <td>{{ $transaction->amount }}</td>
-              <td>{{ $transaction->category }}</td>
-              <td>{{ $transaction->date }}</td>
+            <tr class="text-center border">
+              <td class="border">{{ $transaction->id }}</td>
+              <td class="border">{{ $transaction->name }}</td>
+              <td class="border">{{ $transaction->value }}</td>
+              <td class="border">{{ $transaction->category }}</td>
+              <td class="border">{{ $transaction->updated_at }}</td>
+              <td class="border">edit | delete</td>
             </tr>
           @endforeach
         </tbody>

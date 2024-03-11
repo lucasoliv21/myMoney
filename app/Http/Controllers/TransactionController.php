@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Transaction;
+use Illuminate\Support\Facades\Auth;
 
 
 
@@ -16,25 +17,22 @@ class TransactionController extends Controller
     }
     public function store(Request $request)
     {
-        // Valide os dados da requisição, se necessário
         $validatedData = $request->validate([
-            'description' => 'required|string|max:255',
-            'amount' => 'required|numeric',
-            'date' => 'required|date',
-            'category' => 'required|string',
+            'name' => 'required | string',
+            'value' => 'required | numeric',
+            'category' => 'required | string',
         ]);
+        
+        $transaction = new Transaction();
+        $transaction->name = $validatedData['name'];
+        $transaction->value = $validatedData['value'];
+        $transaction->category = $validatedData['category'];
+        $transaction->user_id = Auth::id();
 
-        // Crie a transação
-        $transaction = Transaction::create([
-            'description' => $validatedData['description'],
-            'amount' => $validatedData['amount'],
-            'date' => $validatedData['date'],
-            'category' => $validatedData['category'],
-        ]);
+
         $transaction->save();
 
-        // Retorne uma resposta adequada, como um JSON com a transação criada
-        return redirect()->route('transactions.index')->with('success', 'Transaction created successfully.');
+        return redirect()->route('transactions')->with('success', 'Transaction created successfully!');
     }
 }
 
