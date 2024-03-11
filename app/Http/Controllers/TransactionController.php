@@ -21,6 +21,7 @@ class TransactionController extends Controller
             'description' => 'required|string|max:255',
             'amount' => 'required|numeric',
             'date' => 'required|date',
+            'category' => 'required|string',
         ]);
 
         // Crie a transação
@@ -28,10 +29,12 @@ class TransactionController extends Controller
             'description' => $validatedData['description'],
             'amount' => $validatedData['amount'],
             'date' => $validatedData['date'],
+            'category' => $validatedData['category'],
         ]);
+        $transaction->save();
 
         // Retorne uma resposta adequada, como um JSON com a transação criada
-        return response()->json($transaction, 201);
+        return redirect()->route('transactions.index')->with('success', 'Transaction created successfully.');
     }
 }
 

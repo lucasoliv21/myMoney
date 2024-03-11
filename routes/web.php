@@ -23,7 +23,9 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/transactions', [TransactionController::class, 'index'])->name('transactions');
+Route::get('/transactions', [TransactionController::class, 'index'])
+    ->middleware(['auth', 'verified'])->name('transactions');
+    
 Route::post('/transactions', [TransactionController::class, 'store'])->name('transactions.store');
 
 Route::middleware('auth')->group(function () {
