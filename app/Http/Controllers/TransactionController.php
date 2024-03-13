@@ -35,6 +35,12 @@ class TransactionController extends Controller
         return redirect()->route('transactions')->with('success', 'Transaction created successfully!');
     }
 
+    public function update(Request $request, $id) {
+        $transaction = Transaction::find($id);
+        $transaction->update($request->all());
+        return redirect()->route('transactions.index')->with('sucess','Transaction updated successfully!');
+    }
+
 
     public function destroy (string $id) {
         $transaction = Transaction::findOrFail($id);
