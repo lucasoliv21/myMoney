@@ -28,6 +28,8 @@ Route::get('/transactions', [TransactionController::class, 'index'])
     
 Route::post('/transactions', [TransactionController::class, 'store'])->name('transactions.store');
 
+Route::post('/transactions/{id}', [TransactionController::class, 'update'])->name('transactions.update');
+
 Route::delete('/transactions/{id}', [TransactionController::class, 'destroy'])->name('transactions.destroy');
 
 Route::middleware('auth')->group(function () {
