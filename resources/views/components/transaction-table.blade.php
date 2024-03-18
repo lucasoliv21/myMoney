@@ -1,7 +1,7 @@
 <table class="table-auto w-2/3 border-2 ">
     <thead class="bg-cyan-300">
         <tr class="gap-x-1">
-            <th class="table-header border">ID</th>
+
             <th class="table-header border">Description</th>
             <th class="table-header border">Amount</th>
             <th class="table-header border">Category</th>
@@ -12,7 +12,7 @@
     <tbody class="bg-white">
         @foreach ($transactions as $transaction)
         <tr class="text-center border hover:bg-amber-100">
-            <td class="border">{{ $transaction->id }}</td>
+
             <td class="border">{{ $transaction->name }}</td>
             <td class="border">{{ $transaction->value }}</td>
             <td class="border">{{ $transaction->category }}</td>
