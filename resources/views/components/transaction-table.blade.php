@@ -11,7 +11,7 @@
     </thead>
     <tbody class="bg-white">
         @foreach ($transactions as $transaction)
-        <tr class="text-center border">
+        <tr class="text-center border hover:bg-amber-100">
             <td class="border">{{ $transaction->id }}</td>
             <td class="border">{{ $transaction->name }}</td>
             <td class="border">{{ $transaction->value }}</td>
