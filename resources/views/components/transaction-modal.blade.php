@@ -4,10 +4,10 @@
         <div class="relative p-10 bg-white rounded-lg shadow-xl">
             <h2 id="transactionModalTitle" class="text-xl font-semibold mb-4">Transactionddddd</h2>
             @php
-                $method = 'POST'; // Defina o método padrão como POST
-                $action = route('transactions.store'); // Defina a ação padrão como store
+                $method = 'POST'; 
+                $action = route('transactions.store'); 
                 if ($mode === 'edit') {
-                    $method = 'PATCH'; // Defina o método como PATCH
+                    $method = 'PATCH'; 
                     $action = route('transactions.update', $transaction->id);
                 }
             @endphp
