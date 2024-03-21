@@ -12,7 +12,10 @@ class TransactionController extends Controller
 {
     public function index()
     {
-        $transactions = Transaction::all();
+        $userId = Auth::id();
+
+        $transactions = Transaction::where('user_id', $userId)->get();
+
         return view('transactions', ['transactions' => $transactions]);
     }
     public function store(Request $request)
